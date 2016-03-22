@@ -125,6 +125,8 @@ $(document).ready(function() {
 
     //goTo();
     //animationBlock($('.setion-animate'));
+
+    scrollUp('.go-top-button','.header');
 });
 
 $(window).resize(function() {
