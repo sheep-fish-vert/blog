@@ -19,5 +19,11 @@
 
 @include font-face('slick');
 
+@include font-face('Gotham Pro', 'GothamProRegular');
+@include font-face('Gotham Pro', 'GothamProBold', 700);
+@include font-face('Gotham Pro', 'GothamProNarrowMedium', 500);
+
+@include font-face('Proxima Nova', 'proximaNovaCondRegular');
+@include font-face('Proxima Nova', 'proximaNovaBold', 700);
 
 /* /fonts*/
