@@ -18,11 +18,31 @@
 }
 @media screen and (max-width: 767px){
 
+    /* header */
+
+        .header{
+            .header-top{
+                .header-top-wrap{display: block;
+                    .header-logo, .header-connect{margin: 0 auto 20px auto;text-align: center;}
+                }
+            }
+        }
+
+    /* /header */
+
 }
 @media screen and (max-width: 666px){
 
 }
 @media screen and (max-width: 479px){
+
+    /* header */
+
+        .header{
+            .header-bottom{font-size: 16px;}
+        }
+
+    /* /header */
 
 }
 @media screen and (max-width: 320px){

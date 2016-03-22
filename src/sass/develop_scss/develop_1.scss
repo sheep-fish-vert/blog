@@ -1,5 +1,23 @@
+/* button */
+
+    .button{display: flex;justify-content:center;align-items:center;min-height: 44px;padding: 5px 5px;background-color: #f26522;font-weight: 700;font-size: 23px;color:#fff;text-decoration: none!important;transition:background-color 300ms ease;
+        &:hover{background-color: #c40707;}
+    }
+
+/* /button */
+
 /* header */
 
-    .header{}
+    .header{
+        .header-top{background-color:#72736D;background-image:url(../images/header-background.jpg);background-repeat: no-repeat;background-position: center bottom;padding: 0 18px;
+            .header-top-wrap{display: flex;justify-content:space-between;flex-wrap:wrap;align-items:flex-end;padding: 25px 0 10px 0;
+                .header-logo{max-width: 320px;width: 100%;}
+                .header-connect{max-width: 320px;width: 100%;text-align: right;
+                    .header-telefone{color:#fff;font-style: 17px;margin-bottom: 12px;}
+                }
+            }
+        }
+        .header-bottom{padding: 15px 18px 15px 18px;background-color: #000;text-align: center;font-size: 18px;line-height:22px;color:#fff;}
+    }
 
 /* /header */
