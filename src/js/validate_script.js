@@ -210,8 +210,68 @@ function fancyboxForm(){
   })
 }
 
+//ajax func for programmer (only for click)
+
+function someAjax(item, someUrl, successFunc, someData){
+
+    $(document).on('click', item, function(e){
+
+        e.preventDefault();
+
+        var itemObject = $(this);
+
+        $.ajax({
+            url:someUrl,
+            data:someData,
+            method:'POST',
+            success : function(data){
+                successFunc(data, itemObject);
+            }
+        });
+
+    });
+
+}
+
+/* example for someAjax func
+
+    write like this
+    someAjax('.link', '/programer_item.php', someFuncName, {action:'someAction', item_id:id});
+
+*/
+
+function showBlog(){
+
+    $(document).on('click', '.item-wrap', function(){
+
+        var itemNum = $(this).parent().index();
+
+        $.getJSON( "js/params.json", function(data) {
+
+            var obj = data[itemNum];
+
+            var images = obj.images;
+            var imagesLength = images.length;
+
+
+
+            if(imagesLength > 1){
+                images.forEach(function(item, i){
+
+                });
+            }
+
+        });
+
+    });
+
+}
+
 $(document).ready(function(){
    validate('#call-popup .contact-form', {submitFunction:validationCall});
    Maskedinput();
    fancyboxForm();
+
+   showBlog();
+
 });

@@ -30,6 +30,16 @@
 
     /* /header */
 
+    /* blog */
+
+        .blog{
+            .news-wrap{
+                .news-item{width: calc(50% - 18px);}
+            }
+        }
+
+    /* /blog */
+
 }
 @media screen and (max-width: 666px){
 
@@ -60,6 +70,16 @@
         }
 
     /* /header */
+
+    /* blog */
+
+        .blog{
+            .news-wrap{
+                .news-item{width: calc(100% - 18px);}
+            }
+        }
+
+    /* /blog */
 
     /* footer */
 

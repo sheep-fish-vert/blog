@@ -5,231 +5,793 @@
         <div class="news-wrap">
 
             <div class="news-item">
-                <div class="img">
-                    <img src="images/news-img1.jpg" alt="" />
-                </div>
-                <div class="news-text">
-                    <h6>Глобал Чайлд групп выступил против жестокого обращения с животными.</h6>
-                </div>
-                <div class="news-footer">
+                <div class="item-wrap">
+                    <div class="img">
+                        <img src="images/news-img1.jpg" alt="" />
+                    </div>
+                    <div class="news-text">
+                        <h6>Глобал Чайлд групп выступил против жестокого обращения с животными.</h6>
+                    </div>
+                    <div class="news-footer">
 
-                    <div class="news-footer-left">
-                        <div class="likes-info">
-                            <span class="likes-text">
-                                -243
-                            </span>
-                            <div class="likes-img">
-                                <img src="images/like-img.png" alt="" />
+                        <div class="news-footer-left">
+                            <div class="likes-info footer-info">
+                                <div class="footer-info-text likes-text">
+                                    -243
+                                </div>
+                                <div class="likes-img">
+                                    <img src="images/like-img.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="messages-info footer-info">
+                                <div class="footer-info-text messages-text">
+                                    23
+                                </div>
+                                <div class="messages-img">
+                                    <img src="images/messages-img.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="retwite-info footer-info">
+                                <div class="footer-info-text retwite-text">
+                                    43
+                                </div>
+                                <div class="retwite-img">
+                                    <img src="images/retwite-img.png" alt="" />
+                                </div>
                             </div>
                         </div>
-                        <div class="messages-info">
-                            <span class="messages-text">
-                                23
-                            </span>
-                            <div class="messages-img">
-                                <img src="images/messages-img.png" alt="" />
-                            </div>
+
+                        <div class="news-right">
+                            <div class="news-date">14. 04. 16</div>
                         </div>
-                        <div class="retwite-info">
-                            <div class="retwite-text">
-                                43
-                            </div>
-                            <div class="retwite-img">
-                                <img src="images/retwite-img.png" alt="" />
+
+                    </div>
+                </div>
+
+                <!-- -->
+
+                <div class="blog-main">
+                    <div class="blog-wrap">
+                        <span class="blog-arrow"></span>
+                        <div class="mbox">
+                            <div class="blog-content cfix">
+
+                                <div class="blog-slider">
+                                    <div class="blog-slider-big"></div>
+                                </div>
+
+                                <div class="blog-text">
+                                    <h6></h6>
+                                    <div class="blog-text-main"></div>
+                                </div>
+
+                                <div class="blog-chat">
+
+                                    <div class="blog-chat-buttons">
+
+                                        <div class="blog-chats-buttons-soc">
+                                            <a href="#">
+                                                <img src="images/soc-img1.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img2.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img3.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img4.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img5.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img6.png" alt="" />
+                                            </a>
+                                        </div>
+
+                                        <div class="blog-chats-func">
+
+                                            <div class="blog-chats-retwite">
+                                                <a href="#" class="blog-chats-retwite-link">
+                                                    <img src="images/retwite-img.png" alt="" />
+                                                    <span></span>
+                                                </a>
+                                            </div>
+
+                                            <div class="blog-chats-likes">
+                                                <a href="#" class="blog-chats-like plus">
+                                                    <img src="images/like-img.png" alt="" />
+                                                </a>
+                                                <span></span>
+                                                <a href="#" class="blog-chats-like minus">
+                                                    <img src="images/like-img.png" alt="" />
+                                                </a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="blog-chat-form">
+                                        <form action="ajax.php">
+                                            <div class="user-avatar">
+                                                <img src="images/user-avatar.png" alt="" />
+                                            </div>
+                                            <div class="form-wrap">
+                                                <div class="form-row">
+                                                    <div class="form-title">Имя Фамилия</div>
+                                                    <div class="form-input">
+                                                        <textarea name="user_comment" placeholder="Напишите ваше мнение" required="required"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row submit-row">
+                                                    <div class="submit-button">
+                                                        <button class="button" type="submit">Отправить</button>
+                                                    </div>
+                                                    <div class="load-img">
+                                                        <input type="file" name="img_load" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="blog-comments">
+                                        <div class="blog-comment-item">
+                                            <div class="blog-comment-avatar">
+                                                <img src="images/blog-comment-avatar.png" alt="" />
+                                            </div>
+                                            <div class="blog-comment-content">
+                                                <div class="blog-comment-user-name">Имя Фамилия</div>
+                                                <div class="blog-comment-text">Конечно же, мне хотелось бы узнать о способах кормежки детей, которые не требовали бы от меня декламирования стихов, цирковых трюков и прочей эквилибристики.</div>
+                                                <div class="blog-comment-date">24.04.16</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
-
-                    <div class="news-right">
-                        <div class="news-date">14. 04. 16</div>
-                    </div>
-
                 </div>
+
             </div>
 
             <div class="news-item">
-                <div class="img">
-                    <img src="images/news-img2.jpg" alt="" />
-                </div>
-                <div class="news-text">
-                    <h6>Глобал Чайлд групп выступил против жестокого обращения с животными.</h6>
-                    <div class="news-text-wrap">
-                        <p>Нашим научно-исследовательским отделом создан уникальный подход к управлению в образовании. Разработано более 20 учебных программ на трех языках, которые высоко ценятся специалистами по всему миру.</p>
+                <div class="item-wrap">
+                    <div class="img">
+                        <img src="images/news-img2.jpg" alt="" />
                     </div>
-                </div>
-                <div class="news-footer">
-
-                    <div class="news-footer-left">
-                        <div class="likes-info">
-                            <span class="likes-text">
-                                -243
-                            </span>
-                            <div class="likes-img">
-                                <img src="images/like-img.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="messages-info">
-                            <span class="messages-text">
-                                23
-                            </span>
-                            <div class="messages-img">
-                                <img src="images/messages-img.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="retwite-info">
-                            <div class="retwite-text">
-                                43
-                            </div>
-                            <div class="retwite-img">
-                                <img src="images/retwite-img.png" alt="" />
-                            </div>
+                    <div class="news-text">
+                        <h6>Глобал Чайлд групп выступил против жестокого обращения с животными.</h6>
+                        <div class="news-text-wrap">
+                            <p>Нашим научно-исследовательским отделом создан уникальный подход к управлению в образовании. Разработано более 20 учебных программ на трех языках, которые высоко ценятся специалистами по всему миру.</p>
                         </div>
                     </div>
+                    <div class="news-footer">
 
-                    <div class="news-right">
-                        <div class="news-date">14. 04. 16</div>
+                        <div class="news-footer-left">
+                            <div class="likes-info footer-info">
+                                <div class="footer-info-text likes-text">
+                                    -243
+                                </div>
+                                <div class="likes-img">
+                                    <img src="images/like-img.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="messages-info footer-info">
+                                <div class="footer-info-text messages-text">
+                                    23
+                                </div>
+                                <div class="messages-img">
+                                    <img src="images/messages-img.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="retwite-info footer-info">
+                                <div class="footer-info-text retwite-text">
+                                    43
+                                </div>
+                                <div class="retwite-img">
+                                    <img src="images/retwite-img.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-right">
+                            <div class="news-date">14. 04. 16</div>
+                        </div>
+
                     </div>
-
                 </div>
+
+                <!-- -->
+
+                <div class="blog-main">
+                    <div class="blog-wrap">
+                        <span class="blog-arrow"></span>
+                        <div class="mbox">
+                            <div class="blog-content cfix">
+
+                                <div class="blog-slider">
+                                    <div class="blog-slider-big"></div>
+                                </div>
+
+                                <div class="blog-text">
+                                    <h6></h6>
+                                    <div class="blog-text-main"></div>
+                                </div>
+
+                                <div class="blog-chat">
+
+                                    <div class="blog-chat-buttons">
+
+                                        <div class="blog-chats-buttons-soc">
+                                            <a href="#">
+                                                <img src="images/soc-img1.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img2.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img3.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img4.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img5.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img6.png" alt="" />
+                                            </a>
+                                        </div>
+
+                                        <div class="blog-chats-func">
+
+                                            <div class="blog-chats-retwite">
+                                                <a href="#" class="blog-chats-retwite-link">
+                                                    <img src="images/retwite-img.png" alt="" />
+                                                    <span></span>
+                                                </a>
+                                            </div>
+
+                                            <div class="blog-chats-likes">
+                                                <a href="#" class="blog-chats-like plus">
+                                                    <img src="images/like-img.png" alt="" />
+                                                </a>
+                                                <span></span>
+                                                <a href="#" class="blog-chats-like minus">
+                                                    <img src="images/like-img.png" alt="" />
+                                                </a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="blog-chat-form">
+                                        <form action="ajax.php">
+                                            <div class="user-avatar">
+                                                <img src="images/user-avatar.png" alt="" />
+                                            </div>
+                                            <div class="form-wrap">
+                                                <div class="form-row">
+                                                    <div class="form-title">Имя Фамилия</div>
+                                                    <div class="form-input">
+                                                        <textarea name="user_comment" placeholder="Напишите ваше мнение" required="required"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row submit-row">
+                                                    <div class="submit-button">
+                                                        <button class="button" type="submit">Отправить</button>
+                                                    </div>
+                                                    <div class="load-img">
+                                                        <input type="file" name="img_load" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="blog-comments">
+                                        <div class="blog-comment-item">
+                                            <div class="blog-comment-avatar">
+                                                <img src="images/blog-comment-avatar.png" alt="" />
+                                            </div>
+                                            <div class="blog-comment-content">
+                                                <div class="blog-comment-user-name">Имя Фамилия</div>
+                                                <div class="blog-comment-text">Конечно же, мне хотелось бы узнать о способах кормежки детей, которые не требовали бы от меня декламирования стихов, цирковых трюков и прочей эквилибристики.</div>
+                                                <div class="blog-comment-date">24.04.16</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="news-item">
-                <div class="img">
-                    <img src="images/news-img3.jpg" alt="" />
-                </div>
-                <div class="news-text">
-                    <h6>Глобал Чайлд групп выступил против жестокого обращения с животными.</h6>
-                    <div class="news-text-wrap">
-                        <p>Нашим научно-исследовательским отделом создан уникальный подход к управлению в образовании. Разработано более 20 учебных программ на трех языках, которые высоко ценятся специалистами по всему миру.</p>
+                <div class="item-wrap">
+                    <div class="img">
+                        <img src="images/news-img3.jpg" alt="" />
                     </div>
-                </div>
-                <div class="news-footer">
-
-                    <div class="news-footer-left">
-                        <div class="likes-info">
-                            <span class="likes-text">
-                                -243
-                            </span>
-                            <div class="likes-img">
-                                <img src="images/like-img.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="messages-info">
-                            <span class="messages-text">
-                                23
-                            </span>
-                            <div class="messages-img">
-                                <img src="images/messages-img.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="retwite-info">
-                            <div class="retwite-text">
-                                43
-                            </div>
-                            <div class="retwite-img">
-                                <img src="images/retwite-img.png" alt="" />
-                            </div>
+                    <div class="news-text">
+                        <h6>Глобал Чайлд групп выступил против жестокого обращения с животными.</h6>
+                        <div class="news-text-wrap">
+                            <p>Нашим научно-исследовательским отделом создан уникальный подход к управлению в образовании. Разработано более 20 учебных программ на трех языках, которые высоко ценятся специалистами по всему миру.</p>
                         </div>
                     </div>
+                    <div class="news-footer">
 
-                    <div class="news-right">
-                        <div class="news-date">14. 04. 16</div>
+                        <div class="news-footer-left">
+                            <div class="likes-info footer-info">
+                                <div class="footer-info-text likes-text">
+                                    -243
+                                </div>
+                                <div class="likes-img">
+                                    <img src="images/like-img.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="messages-info footer-info">
+                                <div class="footer-info-text messages-text">
+                                    23
+                                </div>
+                                <div class="messages-img">
+                                    <img src="images/messages-img.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="retwite-info footer-info">
+                                <div class="footer-info-text retwite-text">
+                                    43
+                                </div>
+                                <div class="retwite-img">
+                                    <img src="images/retwite-img.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-right">
+                            <div class="news-date">14. 04. 16</div>
+                        </div>
+
                     </div>
-
                 </div>
+
+                <!-- -->
+
+                <div class="blog-main">
+                    <div class="blog-wrap">
+                        <span class="blog-arrow"></span>
+                        <div class="mbox">
+                            <div class="blog-content cfix">
+
+                                <div class="blog-slider">
+                                    <div class="blog-slider-big"></div>
+                                </div>
+
+                                <div class="blog-text">
+                                    <h6></h6>
+                                    <div class="blog-text-main"></div>
+                                </div>
+
+                                <div class="blog-chat">
+
+                                    <div class="blog-chat-buttons">
+
+                                        <div class="blog-chats-buttons-soc">
+                                            <a href="#">
+                                                <img src="images/soc-img1.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img2.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img3.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img4.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img5.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img6.png" alt="" />
+                                            </a>
+                                        </div>
+
+                                        <div class="blog-chats-func">
+
+                                            <div class="blog-chats-retwite">
+                                                <a href="#" class="blog-chats-retwite-link">
+                                                    <img src="images/retwite-img.png" alt="" />
+                                                    <span></span>
+                                                </a>
+                                            </div>
+
+                                            <div class="blog-chats-likes">
+                                                <a href="#" class="blog-chats-like plus">
+                                                    <img src="images/like-img.png" alt="" />
+                                                </a>
+                                                <span></span>
+                                                <a href="#" class="blog-chats-like minus">
+                                                    <img src="images/like-img.png" alt="" />
+                                                </a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="blog-chat-form">
+                                        <form action="ajax.php">
+                                            <div class="user-avatar">
+                                                <img src="images/user-avatar.png" alt="" />
+                                            </div>
+                                            <div class="form-wrap">
+                                                <div class="form-row">
+                                                    <div class="form-title">Имя Фамилия</div>
+                                                    <div class="form-input">
+                                                        <textarea name="user_comment" placeholder="Напишите ваше мнение" required="required"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row submit-row">
+                                                    <div class="submit-button">
+                                                        <button class="button" type="submit">Отправить</button>
+                                                    </div>
+                                                    <div class="load-img">
+                                                        <input type="file" name="img_load" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="blog-comments">
+                                        <div class="blog-comment-item">
+                                            <div class="blog-comment-avatar">
+                                                <img src="images/blog-comment-avatar.png" alt="" />
+                                            </div>
+                                            <div class="blog-comment-content">
+                                                <div class="blog-comment-user-name">Имя Фамилия</div>
+                                                <div class="blog-comment-text">Конечно же, мне хотелось бы узнать о способах кормежки детей, которые не требовали бы от меня декламирования стихов, цирковых трюков и прочей эквилибристики.</div>
+                                                <div class="blog-comment-date">24.04.16</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="news-item">
-                <div class="img">
-                    <img src="images/news-img4.jpg" alt="" />
-                </div>
-                <div class="news-text">
-                    <h6>Глобал Чайлд групп выступил против жестокого обращения с животными.</h6>
-                    <div class="news-text-wrap">
-                        <p>Нашим научно-исследовательским отделом создан уникальный подход к управлению в образовании. Разработано более 20 учебных программ на трех языках, которые высоко ценятся специалистами по всему миру.</p>
+                <div class="item-wrap">
+                    <div class="img">
+                        <img src="images/news-img4.jpg" alt="" />
                     </div>
-                </div>
-                <div class="news-footer">
-
-                    <div class="news-footer-left">
-                        <div class="likes-info">
-                            <span class="likes-text">
-                                -243
-                            </span>
-                            <div class="likes-img">
-                                <img src="images/like-img.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="messages-info">
-                            <span class="messages-text">
-                                23
-                            </span>
-                            <div class="messages-img">
-                                <img src="images/messages-img.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="retwite-info">
-                            <div class="retwite-text">
-                                43
-                            </div>
-                            <div class="retwite-img">
-                                <img src="images/retwite-img.png" alt="" />
-                            </div>
+                    <div class="news-text">
+                        <h6>Глобал Чайлд групп выступил против жестокого обращения с животными.</h6>
+                        <div class="news-text-wrap">
+                            <p>Нашим научно-исследовательским отделом создан уникальный подход к управлению в образовании. Разработано более 20 учебных программ на трех языках, которые высоко ценятся специалистами по всему миру.</p>
                         </div>
                     </div>
+                    <div class="news-footer">
 
-                    <div class="news-right">
-                        <div class="news-date">14. 04. 16</div>
+                        <div class="news-footer-left">
+                            <div class="likes-info footer-info">
+                                <div class="footer-info-text likes-text">
+                                    -243
+                                </div>
+                                <div class="likes-img">
+                                    <img src="images/like-img.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="messages-info footer-info">
+                                <div class="footer-info-text messages-text">
+                                    23
+                                </div>
+                                <div class="messages-img">
+                                    <img src="images/messages-img.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="retwite-info footer-info">
+                                <div class="footer-info-text retwite-text">
+                                    43
+                                </div>
+                                <div class="retwite-img">
+                                    <img src="images/retwite-img.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-right">
+                            <div class="news-date">14. 04. 16</div>
+                        </div>
+
                     </div>
-
                 </div>
+
+                <!-- -->
+
+                <div class="blog-main">
+                    <div class="blog-wrap">
+                        <span class="blog-arrow"></span>
+                        <div class="mbox">
+                            <div class="blog-content cfix">
+
+                                <div class="blog-slider">
+                                    <div class="blog-slider-big"></div>
+                                </div>
+
+                                <div class="blog-text">
+                                    <h6></h6>
+                                    <div class="blog-text-main"></div>
+                                </div>
+
+                                <div class="blog-chat">
+
+                                    <div class="blog-chat-buttons">
+
+                                        <div class="blog-chats-buttons-soc">
+                                            <a href="#">
+                                                <img src="images/soc-img1.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img2.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img3.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img4.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img5.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img6.png" alt="" />
+                                            </a>
+                                        </div>
+
+                                        <div class="blog-chats-func">
+
+                                            <div class="blog-chats-retwite">
+                                                <a href="#" class="blog-chats-retwite-link">
+                                                    <img src="images/retwite-img.png" alt="" />
+                                                    <span></span>
+                                                </a>
+                                            </div>
+
+                                            <div class="blog-chats-likes">
+                                                <a href="#" class="blog-chats-like plus">
+                                                    <img src="images/like-img.png" alt="" />
+                                                </a>
+                                                <span></span>
+                                                <a href="#" class="blog-chats-like minus">
+                                                    <img src="images/like-img.png" alt="" />
+                                                </a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="blog-chat-form">
+                                        <form action="ajax.php">
+                                            <div class="user-avatar">
+                                                <img src="images/user-avatar.png" alt="" />
+                                            </div>
+                                            <div class="form-wrap">
+                                                <div class="form-row">
+                                                    <div class="form-title">Имя Фамилия</div>
+                                                    <div class="form-input">
+                                                        <textarea name="user_comment" placeholder="Напишите ваше мнение" required="required"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row submit-row">
+                                                    <div class="submit-button">
+                                                        <button class="button" type="submit">Отправить</button>
+                                                    </div>
+                                                    <div class="load-img">
+                                                        <input type="file" name="img_load" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="blog-comments">
+                                        <div class="blog-comment-item">
+                                            <div class="blog-comment-avatar">
+                                                <img src="images/blog-comment-avatar.png" alt="" />
+                                            </div>
+                                            <div class="blog-comment-content">
+                                                <div class="blog-comment-user-name">Имя Фамилия</div>
+                                                <div class="blog-comment-text">Конечно же, мне хотелось бы узнать о способах кормежки детей, которые не требовали бы от меня декламирования стихов, цирковых трюков и прочей эквилибристики.</div>
+                                                <div class="blog-comment-date">24.04.16</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
 
             <div class="news-item">
-                <div class="img">
-                    <img src="images/news-img5.jpg" alt="" />
-                </div>
-                <div class="news-text">
-                    <h6>Глобал Чайлд групп выступил против жестокого обращения с животными.</h6>
-                    <div class="news-text-wrap">
-                        <p>Нашим научно-исследовательским отделом создан уникальный подход к управлению в образовании. Разработано более 20 учебных программ на трех языках, которые высоко ценятся специалистами по всему миру.</p>
+                <div class="item-wrap">
+                    <div class="img">
+                        <img src="images/news-img5.jpg" alt="" />
                     </div>
-                </div>
-                <div class="news-footer">
-
-                    <div class="news-footer-left">
-                        <div class="likes-info">
-                            <span class="likes-text">
-                                -243
-                            </span>
-                            <div class="likes-img">
-                                <img src="images/like-img.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="messages-info">
-                            <span class="messages-text">
-                                23
-                            </span>
-                            <div class="messages-img">
-                                <img src="images/messages-img.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="retwite-info">
-                            <div class="retwite-text">
-                                43
-                            </div>
-                            <div class="retwite-img">
-                                <img src="images/retwite-img.png" alt="" />
-                            </div>
+                    <div class="news-text">
+                        <h6>Глобал Чайлд групп выступил против жестокого обращения с животными.</h6>
+                        <div class="news-text-wrap">
+                            <p>Нашим научно-исследовательским отделом создан уникальный подход к управлению в образовании. Разработано более 20 учебных программ на трех языках, которые высоко ценятся специалистами по всему миру.</p>
                         </div>
                     </div>
+                    <div class="news-footer">
 
-                    <div class="news-right">
-                        <div class="news-date">14. 04. 16</div>
+                        <div class="news-footer-left">
+                            <div class="likes-info footer-info">
+                                <div class="footer-info-text likes-text">
+                                    -243
+                                </div>
+                                <div class="likes-img">
+                                    <img src="images/like-img.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="messages-info footer-info">
+                                <div class="footer-info-text messages-text">
+                                    23
+                                </div>
+                                <div class="messages-img">
+                                    <img src="images/messages-img.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="retwite-info footer-info">
+                                <div class="footer-info-text retwite-text">
+                                    43
+                                </div>
+                                <div class="retwite-img">
+                                    <img src="images/retwite-img.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-right">
+                            <div class="news-date">14. 04. 16</div>
+                        </div>
+
                     </div>
-
                 </div>
+
+                <!-- -->
+
+                <div class="blog-main">
+                    <div class="blog-wrap">
+                        <span class="blog-arrow"></span>
+                        <div class="mbox">
+                            <div class="blog-content cfix">
+
+                                <div class="blog-slider">
+                                    <div class="blog-slider-big"></div>
+                                </div>
+
+                                <div class="blog-text">
+                                    <h6></h6>
+                                    <div class="blog-text-main"></div>
+                                </div>
+
+                                <div class="blog-chat">
+
+                                    <div class="blog-chat-buttons">
+
+                                        <div class="blog-chats-buttons-soc">
+                                            <a href="#">
+                                                <img src="images/soc-img1.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img2.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img3.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img4.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img5.png" alt="" />
+                                            </a>
+                                            <a href="#">
+                                                <img src="images/soc-img6.png" alt="" />
+                                            </a>
+                                        </div>
+
+                                        <div class="blog-chats-func">
+
+                                            <div class="blog-chats-retwite">
+                                                <a href="#" class="blog-chats-retwite-link">
+                                                    <img src="images/retwite-img.png" alt="" />
+                                                    <span></span>
+                                                </a>
+                                            </div>
+
+                                            <div class="blog-chats-likes">
+                                                <a href="#" class="blog-chats-like plus">
+                                                    <img src="images/like-img.png" alt="" />
+                                                </a>
+                                                <span></span>
+                                                <a href="#" class="blog-chats-like minus">
+                                                    <img src="images/like-img.png" alt="" />
+                                                </a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="blog-chat-form">
+                                        <form action="ajax.php">
+                                            <div class="user-avatar">
+                                                <img src="images/user-avatar.png" alt="" />
+                                            </div>
+                                            <div class="form-wrap">
+                                                <div class="form-row">
+                                                    <div class="form-title">Имя Фамилия</div>
+                                                    <div class="form-input">
+                                                        <textarea name="user_comment" placeholder="Напишите ваше мнение" required="required"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row submit-row">
+                                                    <div class="submit-button">
+                                                        <button class="button" type="submit">Отправить</button>
+                                                    </div>
+                                                    <div class="load-img">
+                                                        <input type="file" name="img_load" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="blog-comments">
+
+                                        <div class="blog-comment-item">
+                                            <div class="blog-comment-avatar">
+                                                <img src="images/blog-comment-avatar.png" alt="" />
+                                            </div>
+                                            <div class="blog-comment-content">
+                                                <div class="blog-comment-user-name">Имя Фамилия</div>
+                                                <div class="blog-comment-text">Конечно же, мне хотелось бы узнать о способах кормежки детей, которые не требовали бы от меня декламирования стихов, цирковых трюков и прочей эквилибристики.</div>
+                                                <div class="blog-comment-date">24.04.16</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
