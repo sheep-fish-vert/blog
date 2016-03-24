@@ -240,32 +240,133 @@ function someAjax(item, someUrl, successFunc, someData){
 
 */
 
+// show clicked blog item
+function showBlogItem(index){
+
+    $('.news-item').css('margin-bottom','25px');
+    $('.news-item .blog-main').css('height','0px');
+    $('.news-item .blog-main').removeClass('active');
+    $('.news-item').eq(index).css('margin-bottom','200px');
+    $('.news-item').eq(index).find('.blog-main').addClass('active').css('height','200px');
+
+};
+
+// blog item height after item load func
+function trueBlogItemHeight(){
+
+    var blogWrapHeight = $('.blog-main.active .blog-wrap').outerHeight();
+    $('.blog-main.active').parent().css('margin-bottom', (blogWrapHeight + parseInt($('.blog-main.active').css('padding-top'))+10));
+    $('.blog-main.active').height(blogWrapHeight);
+
+};
+
 function showBlog(){
+
+    //loading blog content from json file
+
+    obj = null;
 
     $(document).on('click', '.item-wrap', function(){
 
         var itemNum = $(this).parent().index();
+        var blogItem = $('.news-item').eq(itemNum).find('.blog-main');
 
-        $.getJSON( "js/params.json", function(data) {
+        //show blog block
+        showBlogItem(itemNum);
 
-            var obj = data[itemNum];
+        $.ajax({
+            url:'js/params.json',
+            method:'POST',
+            success : function(data){
 
-            var images = obj.images;
-            var imagesLength = images.length;
+                obj = data[itemNum];
+
+                var images = obj.images;
+                var imagesLength = images.length;
+
+                var textTitle = obj.text.title;
+                var textContent = obj.text.content;
+
+                var sliderDone = true;
+
+
+                // add images to big slider
+                if(blogItem.find('.blog-slider-big .slider-item').length == 0){
+                    sliderDone = false;
+                    images.forEach(function(item, i){
+                        blogItem.find('.blog-slider-big').append('<div class="slider-item"><img src='+item+'></div>');
+                    });
+
+                    if(imagesLength > 1){
+
+                        blogItem.find('.blog-slider').append('<div class="blog-slider-small"></div>');
+
+                        //add images to small slider
+                        var pointImg = 1;
+                        images.forEach(function(item, i){
+                            blogItem.find('.blog-slider-small').append('<div class="slider-item"><span class="slider-item-wrap"><img src='+item+' alt="" /></span></div>');
+                            pointImg++;
+                            if(pointImg > imagesLength){
+
+                                blogItem.find('.blog-slider-small .slider-item').click(function(){
+                                    var i = $(this).index();
+                                    blogItem.find('.blog-slider-big .slider-item').removeClass('active');
+                                    blogItem.find('.blog-slider-big .slider-item').eq(i).addClass('active');
+                                });
+
+                                blogItem.find('.blog-slider-small').on('init', function(event, slick, currentSlide, nextSlide){
+                                    sliderDone = true;
+                                    blogItem.find('.blog-slider-small .slider-item').eq(0).click();
+                                });
+
+                                blogItem.find('.blog-slider-small').slick({
+                                    slidesToShow:4,
+                                    slidesToScroll:1,
+                                    focusOnSelect:true,
+                                    infinite:false,
+                                    draggable:false,
+                                    swipe:false
+                                });
+
+
+                            }
+                        });
+                    }
+                }
+
+                // add text content
+                if(!blogItem.find('.blog-text').is('.loaded')){
+                    blogItem.find('.blog-text h6').text(textTitle);
+                    blogItem.find('.blog-text .blog-text-main').html(textContent);
+                }
+
+                // add coments
+                /* code */
+
+                //is all loaded
+
+                var timer = setInterval(function(){
+                    if(sliderDone){
+                        blogItem.addClass('show');
+                        trueBlogItemHeight();
+                        clearInterval(timer);
+                    }
+                }, 0);
 
 
 
-            if(imagesLength > 1){
-                images.forEach(function(item, i){
-
-                });
             }
-
         });
+
+        /*$.getJSON( "js/params.json", function(data) {
+
+            var
+
+        });*/
 
     });
 
-}
+};
 
 $(document).ready(function(){
    validate('#call-popup .contact-form', {submitFunction:validationCall});
