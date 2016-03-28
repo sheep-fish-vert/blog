@@ -17,13 +17,12 @@
 /* fonts */
 //  example -> @include font-face('PFDinTextPro', 'PFDinTextPro-Bold', 700, italic);
 
-@include font-face('slick');
-
 @include font-face('Gotham Pro', 'GothamProRegular');
 @include font-face('Gotham Pro', 'GothamProBold', 700);
 @include font-face('Gotham Pro', 'GothamProNarrowMedium', 500);
 
-@include font-face('Proxima Nova', 'proximaNovaCondRegular');
+@include font-face('Proxima Nova Cond', 'proximaNovaCondRegular');
+@include font-face('Proxima Nova', 'proximaNovaRegular');
 @include font-face('Proxima Nova', 'proximaNovaBold', 700);
 
 /* /fonts*/

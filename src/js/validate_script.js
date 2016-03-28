@@ -268,29 +268,38 @@ function likesClickAjax(){
 // show clicked blog item
 function showBlogItem(index){
 
-    destroyAll();
 
-    $('.news-item').eq(index).css('margin-bottom','200px');
-    $('.news-item').eq(index).find('.blog-main').addClass('active').css('height','200px');
 
 };
 
+// destroy all content before load items
 function destroyAll(){
 
+    var pretyDestroy = $('.blog-main.active');
     $('.news-item').css('margin-bottom','25px');
-    $('.news-item .blog-main').css('height','0px');
-    $('.news-item .blog-main.active .blog-slider-big .slider-item').remove();
-    if($('.news-item .blog-main.active .blog-slider-small').is('.slick-slider')){
-        $('.news-item .blog-main.active .blog-slider-small').slick('destroy').remove();
 
-    }
-    $('.news-item .blog-main.active .blog-text h6').text('');
-    $('.news-item .blog-main.active .blog-text .blog-text-main').html('');
+    pretyDestroy.css('height','0px');
 
-    $('.news-item .blog-main.active .blog-chats-retwite span').text('');
-    $('.news-item .blog-main.active .likes-value').text('');
+    pretyDestroy.removeClass('active show');
 
-    $('.news-item .blog-main').removeClass('active');
+    setTimeout(function(){
+
+
+        pretyDestroy.find('.blog-slider-big .slider-item').remove();
+        if(pretyDestroy.find('.blog-slider-small').is('.slick-slider')){
+            pretyDestroy.find('.blog-slider-small').slick('destroy').remove();
+
+        }
+        pretyDestroy.find('.blog-text h6').text('');
+        pretyDestroy.find('.blog-text .blog-text-main').html('');
+
+        pretyDestroy.find('.blog-chats-retwite span').text('');
+        pretyDestroy.find('.likes-value').text('');
+        if(pretyDestroy.find('.blog-comment-item').length != 0){
+            pretyDestroy.find('.blog-comment-item').remove();
+        }
+
+    },500);
 
 }
 
@@ -303,11 +312,20 @@ function trueBlogItemHeight(){
 
 };
 
+// main func for load blog info
 function showBlog(){
+
+    $(window).resize(function(){
+
+        trueBlogItemHeight();
+
+    });
 
     //loading blog content from json file
 
-    obj = null;
+    var obj = null;
+    var timer = null;
+    var showTimer = null;
 
     //close active blog window
     $(document).on('click', '.close-button', function(){
@@ -316,105 +334,144 @@ function showBlog(){
 
     });
 
-    $(document).on('click', '.item-wrap', function(){
+    $(document).on('click', '.item-wrap:not(.active)', function(){
 
-        var itemNum = $(this).parent().index();
-        var blogItem = $('.news-item').eq(itemNum).find('.blog-main');
+        clearInterval(timer);
+        clearTimeout(showTimer);
+
+        var showTime = 0;
+        if($('.blog-main.active').length != 0){
+            showTime = 500;
+        }
+
+        var itemMain = $(this).parent();
+        var itemNum = itemMain.index();
+        var blogItem = itemMain.find('.blog-main');
 
         //show blog block
-        showBlogItem(itemNum);
+        destroyAll();
 
-        $.ajax({
-            url:'js/params.json',
-            method:'POST',
-            success : function(data){
+        showTimer = setTimeout(function(){
 
-                obj = data[itemNum];
+            itemMain.css('margin-bottom','200px');
+            blogItem.addClass('active').css('height','200px');
 
-                var images = obj.images;
-                var imagesLength = images.length;
+            $.ajax({
+                url:'js/params.json',
+                method:'POST',
+                success : function(data){
 
-                var textTitle = obj.text.title;
-                var textContent = obj.text.content;
+                    obj = data[itemNum];
 
-                var retwiteValue = obj.retwite;
-                var likesValue = obj.likes;
+                    var images = obj.images;
+                    var imagesLength = images.length;
 
-                var sliderDone = false;
+                    var textTitle = obj.text.title;
+                    var textContent = obj.text.content;
+
+                    var retwiteValue = obj.retwite;
+                    var likesValue = obj.likes;
+
+                    var comments = obj.comments;
+
+                    var sliderDone = false;
 
 
-                // add images to big slider
+                    // add images to big slider
 
-                images.forEach(function(item, i){
-                    blogItem.find('.blog-slider-big').append('<div class="slider-item"><img src='+item+'></div>');
-                });
-
-                if(imagesLength > 1){
-
-                    blogItem.find('.blog-slider').append('<div class="blog-slider-small"></div>');
-
-                    //add images to small slider
-                    var pointImg = 1;
                     images.forEach(function(item, i){
-                        blogItem.find('.blog-slider-small').append('<div class="slider-item"><span class="slider-item-wrap"><img src='+item+' alt="" /></span></div>');
-                        pointImg++;
-                        if(pointImg > imagesLength){
-
-                            blogItem.find('.blog-slider-small .slider-item').click(function(){
-                                var i = $(this).index();
-                                blogItem.find('.blog-slider-big .slider-item').removeClass('active');
-                                blogItem.find('.blog-slider-big .slider-item').eq(i).addClass('active');
-                            });
-
-                            blogItem.find('.blog-slider-small').on('init', function(event, slick, currentSlide, nextSlide){
-                                sliderDone = true;
-                                blogItem.find('.blog-slider-small .slider-item').eq(0).click();
-                            });
-
-                            blogItem.find('.blog-slider-small').slick({
-                                slidesToShow:4,
-                                slidesToScroll:1,
-                                focusOnSelect:true,
-                                infinite:false,
-                                draggable:false,
-                                swipe:false
-                            });
-
-
-                        }
+                        blogItem.find('.blog-slider-big').append('<div class="slider-item"><img src='+item+'></div>');
                     });
-                }else{
-                    blogItem.find('.blog-slider-big .slider-item').addClass('active');
-                    sliderDone = true;
-                }
 
-                // add text content
+                    if(imagesLength > 1){
 
-                blogItem.find('.blog-text h6').text(textTitle);
-                blogItem.find('.blog-text .blog-text-main').html(textContent);
+                        blogItem.find('.blog-slider').append('<div class="blog-slider-small"></div>');
+
+                        //add images to small slider
+                        var pointImg = 1;
+                        images.forEach(function(item, i){
+                            blogItem.find('.blog-slider-small').append('<div class="slider-item cfix"><span class="slider-item-wrap"><img src='+item+' alt="" /></span></div>');
+                            pointImg++;
+                            if(pointImg > imagesLength){
+
+                                blogItem.find('.blog-slider-small .slider-item').click(function(){
+                                    var i = $(this).index();
+                                    blogItem.find('.blog-slider-big .slider-item').removeClass('active');
+                                    blogItem.find('.blog-slider-big .slider-item').eq(i).addClass('active');
+                                });
+
+                                blogItem.find('.blog-slider-small').on('init', function(event, slick, currentSlide, nextSlide){
+                                    sliderDone = true;
+                                    blogItem.find('.blog-slider-small .slider-item').eq(0).click();
+                                });
+
+                                blogItem.find('.blog-slider-small').slick({
+                                    slidesToShow:4,
+                                    slidesToScroll:1,
+                                    focusOnSelect:true,
+                                    infinite:false,
+                                    draggable:false,
+                                    swipe:false,
+                                    responsive: [
+                                        {
+                                            breakpoint: 375,
+                                            settings:{
+                                                slidesToShow:2
+                                            }
+                                        }
+                                    ]
+                                });
 
 
-                // add coments
-
-                    // retwite & likes script
-
-                    blogItem.find('.blog-chats-retwite span').text(retwiteValue);
-                    blogItem.find('.blog-chats-likes .likes-value').text(likesValue);
-
-                //is all loaded
-
-                var timer = setInterval(function(){
-                    if(sliderDone){
-                        blogItem.addClass('show');
-                        trueBlogItemHeight();
-                        clearInterval(timer);
+                            }
+                        });
+                    }else{
+                        blogItem.find('.blog-slider-big .slider-item').addClass('active');
+                        sliderDone = true;
                     }
-                }, 0);
+
+                    // add text content
+
+                    blogItem.find('.blog-text h6').text(textTitle);
+                    blogItem.find('.blog-text .blog-text-main').html(textContent);
 
 
+                    // add coments
 
-            }
-        });
+                        // retwite & likes script
+
+                        blogItem.find('.blog-chats-retwite span').text(retwiteValue);
+                        blogItem.find('.blog-chats-likes .likes-value').text(likesValue);
+
+                        // add comments content
+
+                        comments.forEach(function(item, i){
+
+                            blogItem.find('.blog-comments').prepend('<div class="blog-comment-item"><div class="blog-comment-avatar"></div><div class="blog-comment-content"><div class="blog-comment-user-name"></div><div class="blog-comment-text"></div><div class="blog-comment-date"></div></div></div>');
+                            var neededItem = blogItem.find('.blog-comment-item').eq(0);
+                            neededItem.find('.blog-comment-avatar').prepend('<img src='+item.useravatar+' alt="" />');
+                            neededItem.find('.blog-comment-user-name').text(item.username);
+                            neededItem.find('.blog-comment-text').html(item.usertext);
+                            neededItem.find('.blog-comment-date').text(item.userdate);
+
+                        });
+
+                    //is all loaded
+
+                    timer = setInterval(function(){
+                        if(sliderDone){
+                            setTimeout(function(){
+                                blogItem.addClass('show');
+                                trueBlogItemHeight();
+                            }, 300);
+                            clearInterval(timer);
+                        }
+                    }, 0);
+
+                }
+            });
+
+        }, showTime);
 
     });
 
