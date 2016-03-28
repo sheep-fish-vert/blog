@@ -165,7 +165,6 @@ function validationCallDocuments(form){
 
 }
 
-
 function popNext(popupId, popupWrap){
 
     $.fancybox.open(popupId,{
@@ -187,8 +186,6 @@ function popNext(popupId, popupWrap){
     },2000);
 
 }
-
-
 
 /*маска на инпуте*/
 function Maskedinput(){
@@ -265,55 +262,61 @@ function likesClickAjax(){
 
 }
 
-// show clicked blog item
-function showBlogItem(index){
-
-
-
-};
-
-// destroy all content before load items
-function destroyAll(){
-
-    var pretyDestroy = $('.blog-main.active');
-    $('.news-item').css('margin-bottom','25px');
-
-    pretyDestroy.css('height','0px');
-
-    pretyDestroy.removeClass('active show');
-
-    setTimeout(function(){
-
-
-        pretyDestroy.find('.blog-slider-big .slider-item').remove();
-        if(pretyDestroy.find('.blog-slider-small').is('.slick-slider')){
-            pretyDestroy.find('.blog-slider-small').slick('destroy').remove();
-
-        }
-        pretyDestroy.find('.blog-text h6').text('');
-        pretyDestroy.find('.blog-text .blog-text-main').html('');
-
-        pretyDestroy.find('.blog-chats-retwite span').text('');
-        pretyDestroy.find('.likes-value').text('');
-        if(pretyDestroy.find('.blog-comment-item').length != 0){
-            pretyDestroy.find('.blog-comment-item').remove();
-        }
-
-    },500);
-
-}
-
-// blog item height after item load func
-function trueBlogItemHeight(){
-
-    var blogWrapHeight = $('.blog-main.active .blog-wrap').outerHeight();
-    $('.blog-main.active').parent().css('margin-bottom', (blogWrapHeight + parseInt($('.blog-main.active').css('padding-top'))+10));
-    $('.blog-main.active').height(blogWrapHeight);
-
-};
-
 // main func for load blog info
 function showBlog(){
+
+    // destroy all content before load items
+    function destroyAll(){
+
+        var pretyDestroy = $('.blog-main.active');
+        $('.news-item').css('margin-bottom','25px');
+
+        pretyDestroy.css('height','0px');
+
+        pretyDestroy.removeClass('active show');
+
+        setTimeout(function(){
+
+            pretyDestroy.find('.blog-slider-big .slider-item').remove();
+            if(pretyDestroy.find('.blog-slider-small').is('.slick-slider')){
+                pretyDestroy.find('.blog-slider-small').slick('destroy').remove();
+
+            }
+            pretyDestroy.find('.blog-text h6').text('');
+            pretyDestroy.find('.blog-text .blog-text-main').html('');
+
+            pretyDestroy.find('.blog-chats-retwite span').text('');
+            pretyDestroy.find('.likes-value').text('');
+            if(pretyDestroy.find('.blog-comment-item').length != 0){
+                pretyDestroy.find('.blog-comment-item').remove();
+            }
+
+        },500);
+
+    }
+
+    // blog item height after item load func
+
+    var realHeightTimer = null;
+
+    function trueBlogItemHeight(){
+
+        var commentHeight = 0;
+
+        $('.blog-main.active .blog-comment-item').each(function(){
+            commentHeight = commentHeight + parseInt($(this).height())+parseInt($(this).css('margin-bottom'));
+        });
+
+        $('.blog-main.active .blog-comments').height(commentHeight);
+
+        clearTimeout(realHeightTimer);
+        realHeightTimer = setTimeout(function(){
+            var blogWrapHeight = $('.blog-main.active .blog-wrap').outerHeight();
+            $('.blog-main.active').parent().css('margin-bottom', (blogWrapHeight + parseInt($('.blog-main.active').css('padding-top'))+10));
+            $('.blog-main.active').height(blogWrapHeight);
+        }, 300);
+
+    };
 
     $(window).resize(function(){
 
@@ -375,6 +378,7 @@ function showBlog(){
                     var comments = obj.comments;
 
                     var sliderDone = false;
+                    var commentsDone = false;
 
 
                     // add images to big slider
@@ -445,6 +449,8 @@ function showBlog(){
 
                         // add comments content
 
+                        var commentsLength = comments.length;
+
                         comments.forEach(function(item, i){
 
                             blogItem.find('.blog-comments').prepend('<div class="blog-comment-item"><div class="blog-comment-avatar"></div><div class="blog-comment-content"><div class="blog-comment-user-name"></div><div class="blog-comment-text"></div><div class="blog-comment-date"></div></div></div>');
@@ -454,12 +460,17 @@ function showBlog(){
                             neededItem.find('.blog-comment-text').html(item.usertext);
                             neededItem.find('.blog-comment-date').text(item.userdate);
 
+                            if(i == (commentsLength-1)){
+
+                                commentsDone = true;
+                            }
+
                         });
 
                     //is all loaded
 
                     timer = setInterval(function(){
-                        if(sliderDone){
+                        if(sliderDone && commentsDone){
                             setTimeout(function(){
                                 blogItem.addClass('show');
                                 trueBlogItemHeight();
@@ -475,7 +486,102 @@ function showBlog(){
 
     });
 
+    // blog chat validate
+    function blogChatValidate(){
+
+        $('.blog-form').each(function(index, el) {
+
+            var formClass = '.blog-form[data-form='+index+']';
+            validate(formClass, {submitFunction:addComment});
+
+        });
+
+        function addComment(form){
+
+            var formComment = $(form);
+
+            var formData = new FormData($(form)[0]);
+            formData.append('file', formComment.find('input[type=file]')[0].files[0]);
+            var formId = formComment.data('form');
+            var formText = formComment.find('textarea').val();
+
+            $('.blog-main.active .blog-comments').addClass('loading').height(200);
+
+            $.ajax({
+                url:'ajax-json.php',
+                processData: false,
+                contentType: false,
+                data:{idPost:formId, formData:formData},
+                method:'POST',
+                success:function(data){
+
+                    $('.blog-main.active .blog-comment-item').remove();
+
+                    var dataParsed = JSON.parse(data);
+
+                    dataParsed.forEach(function(item, index){
+
+                        var userAvatar = item.useravatar;
+                        var userName = item.username;
+                        var userText = item.usertext;
+                        var userDate = item.userdate;
+
+                        $('.blog-main.active .blog-comments').prepend('<div class="blog-comment-item"><div class="blog-comment-avatar"><img src='+userAvatar+' alt="" /></div><div class="blog-comment-content"><div class="blog-comment-user-name">'+userName+'</div><div class="blog-comment-text">'+userText+'</div><div class="blog-comment-date">'+userDate+'</div></div></div>');
+
+                        if(index == (dataParsed.length - 1)){
+
+                            trueBlogItemHeight();
+
+                            $('.blog-main.active .blog-comments').removeClass('loading');
+
+                        }
+
+                    });
+
+                }
+            });
+
+        }
+
+    }
+
+    // change input type file
+    function changeInputTypeFile(){
+
+        //show loaded file name
+
+        $('.blog-form input[type="file"]').change(function(){
+
+            var formWrap = $(this).parents('.blog-form');
+
+            formWrap.find('.load-file-text').text($(this)[0].files[0].name);
+
+            formWrap.find('.remove-file').addClass('show');
+
+            trueBlogItemHeight();
+
+        });
+
+        //remove loaded file
+
+        $(document).on('click', '.blog-form .remove-file.show', function(){
+
+            var formWrap = $(this).parents('.blog-form');
+            formWrap.find('input[type="file"]').val('');
+            formWrap.find('.remove-file.show').removeClass('show');
+            formWrap.find('.load-file-text').text('');
+            trueBlogItemHeight();
+
+        });
+
+    }
+
+    changeInputTypeFile();
+    blogChatValidate();
+
 };
+
+
 
 $(document).ready(function(){
    validate('#call-popup .contact-form', {submitFunction:validationCall});
@@ -485,5 +591,6 @@ $(document).ready(function(){
    showBlog();
 
    likesClickAjax();
+
 
 });
