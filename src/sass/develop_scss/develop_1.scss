@@ -119,6 +119,7 @@
 
             // blog slider
             .blog-slider{float:left;width: 425px;
+                &.hide{display: none;}
                 .blog-slider-big{margin-bottom: 10px;position: relative;height: 285px;background-color: #838383;
                     .slider-item{position: absolute;width: 100%;height: 100%;display: flex;justify-content:center;align-items:center;opacity: 0;z-index: 0;cursor:pointer;transition:opacity 300ms ease;
                         img{max-height: 100%;}

@@ -364,7 +364,7 @@ function showBlog(){
                 method:'POST',
                 success : function(data){
 
-                    obj = data[itemNum];
+                    obj = JSON.parse(data);
 
                     var images = obj.images;
                     var imagesLength = images.length;
@@ -382,6 +382,7 @@ function showBlog(){
 
 
                     // add images to big slider
+                    blogItem.find('.blog-slider').removeClass('hide');
 
                     images.forEach(function(item, i){
                         blogItem.find('.blog-slider-big').append('<div class="slider-item"><img src='+item+'></div>');
@@ -429,8 +430,11 @@ function showBlog(){
 
                             }
                         });
-                    }else{
+                    }else if(imagesLength == 1){
                         blogItem.find('.blog-slider-big .slider-item').addClass('active');
+                        sliderDone = true;
+                    }else{
+                        blogItem.find('.blog-slider').addClass('hide');
                         sliderDone = true;
                     }
 
@@ -451,21 +455,25 @@ function showBlog(){
 
                         var commentsLength = comments.length;
 
-                        comments.forEach(function(item, i){
+                        if(commentsLength != 0){
+                            comments.forEach(function(item, i){
 
-                            blogItem.find('.blog-comments').prepend('<div class="blog-comment-item"><div class="blog-comment-avatar"></div><div class="blog-comment-content"><div class="blog-comment-user-name"></div><div class="blog-comment-text"></div><div class="blog-comment-date"></div></div></div>');
-                            var neededItem = blogItem.find('.blog-comment-item').eq(0);
-                            neededItem.find('.blog-comment-avatar').prepend('<img src='+item.useravatar+' alt="" />');
-                            neededItem.find('.blog-comment-user-name').text(item.username);
-                            neededItem.find('.blog-comment-text').html(item.usertext);
-                            neededItem.find('.blog-comment-date').text(item.userdate);
+                                blogItem.find('.blog-comments').prepend('<div class="blog-comment-item"><div class="blog-comment-avatar"></div><div class="blog-comment-content"><div class="blog-comment-user-name"></div><div class="blog-comment-text"></div><div class="blog-comment-date"></div></div></div>');
+                                var neededItem = blogItem.find('.blog-comment-item').eq(0);
+                                neededItem.find('.blog-comment-avatar').prepend('<img src='+item.useravatar+' alt="" />');
+                                neededItem.find('.blog-comment-user-name').text(item.username);
+                                neededItem.find('.blog-comment-text').html(item.usertext);
+                                neededItem.find('.blog-comment-date').text(item.userdate);
 
-                            if(i == (commentsLength-1)){
+                                if(i == (commentsLength-1)){
 
-                                commentsDone = true;
-                            }
+                                    commentsDone = true;
+                                }
 
-                        });
+                            });
+                        }else{
+                            commentsDone = true;
+                        }
 
                     //is all loaded
 
