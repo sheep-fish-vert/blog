@@ -185,7 +185,15 @@
                     form{display: flex;flex-wrap:wrap;justify-content:flex-start;}
                     .user-avatar{width: 50px;height: 50px;margin-right: 10px;}
                     .form-wrap{width: calc(100% - 60px);
-                        .form-title{font-size: 19px;font-family: "Proxima Nova", sans-serif;color:#4d4d4f;margin-bottom: 3px;}
+                        .form-title{font-size: 19px;font-family: "Proxima Nova", sans-serif;color:#4d4d4f;margin-bottom: 3px;
+                            input{width: 100%;max-width: 225px;border:2px solid #acaeb0;height: 36px;font-family: 'Proxima Nova', sans-serif;font-size: 19px;color:#000;padding: 4px 5px 5px 5px;transition:border-color 300ms ease;
+                                &.error{border-color: #c40707;}
+                                &::-webkit-input-placeholder {font-family:'Proxima Nova', sans-serif;color:#bebebe;font-size: 19px;}
+                                &:-moz-placeholder {font-family:'Proxima Nova', sans-serif;color:#bebebe;font-size: 19px;}
+                                &::-moz-placeholder {font-family:'Proxima Nova', sans-serif;color:#bebebe;font-size: 19px;}
+                                &:-ms-input-placeholder {font-family:'Proxima Nova', sans-serif;color:#bebebe;font-size: 19px;}
+                            }
+                        }
                         .form-row{margin-bottom: 6px;
                             &.submit-row{margin-bottom: 0;position: relative;
                                 .submit-row-wrap{display: flex;flex-wrap:wrap;justify-content:space-between;}

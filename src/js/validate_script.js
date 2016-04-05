@@ -364,7 +364,8 @@ function showBlog(){
                 method:'POST',
                 success : function(data){
 
-                    obj = JSON.parse(data);
+                    //obj = JSON.parse(data); //for server
+                    obj = data; //for local
 
                     var images = obj.images;
                     var imagesLength = images.length;
