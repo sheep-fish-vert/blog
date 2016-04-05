@@ -510,7 +510,9 @@ function showBlog(){
             var formComment = $(form);
 
             var formData = new FormData($(form)[0]);
-            formData.append('file', formComment.find('input[type=file]')[0].files[0]);
+            if(formComment.find('input[type="file"]').length){
+                formData.append('file', formComment.find('input[type=file]')[0].files[0]);
+            }
             var formId = formComment.data('form');
             var formText = formComment.find('textarea').val();
 
