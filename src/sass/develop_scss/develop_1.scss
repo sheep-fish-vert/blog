@@ -256,3 +256,19 @@
     }
 
 /* /blog */
+
+/* right popup for blog page */
+
+    .global-wrapper{
+        .additionalMenu{
+            .close{opacity: 0.2;}
+            input[type=text]{
+                &::-webkit-input-placeholder {color:#A9AFC0;font-family: 'GothamPro', sans-serif;}
+                &:-moz-placeholder {color:#A9AFC0;font-family: 'GothamPro', sans-serif;}
+                &::-moz-placeholder {color:#A9AFC0;font-family: 'GothamPro', sans-serif;}
+                &:-ms-input-placeholder {color:#A9AFC0;font-family: 'GothamPro', sans-serif;}
+            }
+        }
+    }
+
+/* /right popup for blog page */

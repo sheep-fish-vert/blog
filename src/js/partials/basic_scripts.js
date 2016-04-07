@@ -146,6 +146,12 @@ $(document).ready(function() {
     scrollUp('.go-top-button','.header');
 });
 
+$(window).load(function(){
+
+    oneHeightItems();
+
+});
+
 $(window).resize(function() {
 
     $('.footer_placeholder').height($('.footer').outerHeight());
