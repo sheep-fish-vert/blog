@@ -52,7 +52,7 @@
 
     .blog{background-color:#e7e8e9;padding-top: 25px;position: relative;
         .mbox{position: static;}
-        .news-wrap{margin:0 -9px;display:flex;flex-wrap:wrap;align-items:flex-start;
+        .news-wrap{margin:0 -9px;padding-bottom:35px;display:flex;flex-wrap:wrap;align-items:flex-start;
             .item-wrap{cursor: pointer;}
             .news-item{width: calc(33.33% - 18px);margin:0 9px 25px 9px;background-color: #fff;transition:margin 500ms ease;
                 .img{display: flex;justify-content:center;align-items:center;height: 184px;
@@ -272,3 +272,36 @@
     }
 
 /* /right popup for blog page */
+
+/* blog-page */
+
+    .blog-main.blog-inside{height: auto;position: static;padding-top:0;
+        &:before{display: none;}
+        .blog-content{opacity: 1;
+            .blog-slider{margin-right: 15px;
+                .blog-slider-small{
+                    .slider-item{height:84px;vertical-align: middle;display: flex;align-items:center;}
+                    .slick-arrow{width: 14px;height: 32px;top:50%;
+                        &.slick-prev, &.slick-next{border-width: 0;}
+                        &:before{content:'';display: block;position: absolute;top:calc(50% - 10px);height: 20px;width: 20px;border-style:solid;border-width: 3px 3px 0 0;border-color:#fff;transform-origin:50% 50%;}
+                        &.slick-prev{
+                            &:before{left: 3px;transform:rotate(-132deg) translateZ(0px);}
+                        }
+                        &.slick-next{
+                            &:before{right:3px;transform:rotate(45deg) translateZ(0px);}
+                        }
+
+                    }
+                }
+                .share-icons{padding-top: 20px;
+                    .pluso{margin-bottom: 10px;}
+                    .pluso-counter{display: inline-block;vertical-align: bottom;
+                        b{top: -8px;}
+                    }
+                }
+            }
+            .blog-text{width: 100%;float: none;}
+        }
+    }
+
+/* /blog-page */
