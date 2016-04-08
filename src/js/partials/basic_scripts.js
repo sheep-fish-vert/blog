@@ -143,7 +143,7 @@ $(document).ready(function() {
     //goTo();
     //animationBlock($('.setion-animate'));
 
-    scrollUp('.go-top-button','.header');
+    scrollUp('.go-top-button:not(.cameback-link)','.header');
 });
 
 $(window).load(function(){
