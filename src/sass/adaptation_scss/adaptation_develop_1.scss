@@ -10,6 +10,19 @@
 @media screen and (max-width: 1280px){
 
 }
+@media screen and (max-width: 1170px){
+
+    /* footer */
+
+        .footer{
+            .footer-wrap{
+                .go-top-button{right: 0;}
+            }
+        }
+
+    /* /footer */
+
+}
 @media screen and (max-width: 1024px){
 
 }
@@ -28,12 +41,6 @@
         }
 
     /* /blog */
-
-    /* blog-page */
-
-        .blog-main.blog-inside .blog-content .blog-slider{margin: 0 auto;}
-
-    /* /blog-page */
 
 }
 @media screen and (max-width: 767px){

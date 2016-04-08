@@ -54,7 +54,7 @@
 
 /* blog */
 
-    .blog{background-color:#e7e8e9;padding-top: 25px;position: relative;
+    .blog{background-color:#e7e8e9;padding-top: 25px;position: relative;min-height: calc(100vh - 389px);
         .mbox{position: static;}
         .news-wrap{margin:0 -9px;padding-bottom:35px;display:flex;flex-wrap:wrap;align-items:flex-start;
             .item-wrap{cursor: pointer;}
@@ -88,6 +88,15 @@
                         .retwite-img{max-width: 21px;}
                     }
 
+                }
+            }
+            .navigation{width: 100%;text-align: center;
+                .wp-paginate{display: inline-block;
+                    a{color:#f26522;background:transparent;border:none;padding: 0;margin-right:0;margin: 0 4px;text-decoration: none;
+                        &:hover{color:#666;}
+                    }
+                    li{display: inline-block;}
+                    .current{background:transparent;border:none;padding: 0;margin-right: 0;margin: 0 4px;color:#f26522;text-decoration: underline;}
                 }
             }
         }
@@ -158,6 +167,7 @@
 
                 // blog top
                 .blog-chat-buttons{display: flex;justify-content:space-between;padding-top: 20px;margin-bottom: 25px;
+                    .read-more{margin-bottom: 10px;}
                     .blog-chats-buttons-soc{display: flex;
                         a{display: flex;width: 39px;height: 39px;background-color:#e7e8e9;border:1px solid #a4a6a9;border-radius: 1px;text-decoration: none;align-items:center;justify-content:center;padding: 2px;transition:background-color 300ms ease, border-color 300ms ease;
                             img{max-height: 100%;}
@@ -282,7 +292,7 @@
     .blog-main.blog-inside{height: auto;position: static;padding-top:0;
         &:before{display: none;}
         .blog-content{opacity: 1;
-            .blog-slider{margin-right: 15px;
+            .blog-slider{
                 .blog-slider-big{
                     .slider-item{overflow: hidden;
                         img{max-width: none;min-width:100%;height: 100%;}
@@ -309,7 +319,7 @@
                     }
                 }
             }
-            .blog-text{width: 100%;float: none;}
+
         }
     }
 
