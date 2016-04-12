@@ -301,20 +301,23 @@ function showBlog(){
 
     function trueBlogItemHeight(){
 
-        var commentHeight = 0;
+        if(!$('.blog-main').is('.blog-inside')){
 
-        $('.blog-main.active .blog-comment-item').each(function(){
-            commentHeight = commentHeight + parseInt($(this).height())+parseInt($(this).css('margin-bottom'));
-        });
+            var commentHeight = 0;
 
-        $('.blog-main.active .blog-comments').height(commentHeight);
+            $('.blog-main.active .blog-comment-item').each(function(){
+                commentHeight = commentHeight + parseInt($(this).height())+parseInt($(this).css('margin-bottom'));
+            });
 
-        clearTimeout(realHeightTimer);
-        realHeightTimer = setTimeout(function(){
-            var blogWrapHeight = $('.blog-main.active .blog-wrap').outerHeight();
-            $('.blog-main.active').parent().css('margin-bottom', (blogWrapHeight + parseInt($('.blog-main.active').css('padding-top'))+10));
-            $('.blog-main.active').height(blogWrapHeight);
-        }, 300);
+            $('.blog-main.active .blog-comments').height(commentHeight);
+
+            clearTimeout(realHeightTimer);
+            realHeightTimer = setTimeout(function(){
+                var blogWrapHeight = $('.blog-main.active .blog-wrap').outerHeight();
+                $('.blog-main.active').parent().css('margin-bottom', (blogWrapHeight + parseInt($('.blog-main.active').css('padding-top'))+10));
+                $('.blog-main.active').height(blogWrapHeight);
+            }, 300);
+        }
 
     };
 
@@ -541,7 +544,12 @@ function showBlog(){
 
                         if(index == (dataParsed.length - 1)){
 
-                            trueBlogItemHeight();
+                            if(!$('.blog-main').is('.blog-inside')){
+                                trueBlogItemHeight();
+                            }
+                            else{
+                                $('.blog-main.active .blog-comments').removeAttr('style');
+                            }
 
                             $('.blog-main.active .blog-comments').removeClass('loading');
 
