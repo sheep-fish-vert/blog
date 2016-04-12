@@ -519,6 +519,8 @@ function showBlog(){
             var formId = formComment.data('form');
             var formText = formComment.find('textarea').val();
 
+            formComment[0].reset();
+
             $('.blog-main.active .blog-comments').addClass('loading').height(200);
 
             $.ajax({
