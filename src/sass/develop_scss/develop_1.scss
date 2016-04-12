@@ -10,10 +10,13 @@
 
     .header{
         .header-top{background-color:#72736D;background-image:url(../images/header-background.jpg);background-repeat: no-repeat;background-position: center bottom;padding: 0 18px;
-            .header-top-wrap{display: flex;justify-content:space-between;flex-wrap:wrap;align-items:flex-end;padding: 25px 0 10px 0;
-                .header-logo{max-width: 320px;width: 100%;}
-                .header-connect{max-width: 320px;width: 100%;text-align: right;
-                    .header-telefone{color:#fff;font-style: 17px;margin-bottom: 12px;}
+            .header-top-wrap{display: flex;justify-content:space-between;flex-wrap:wrap;align-items:flex-end;flex-flow: row wrap;padding: 25px 0 10px 0;
+                .header-logo{
+                    img{max-width: 320px;}
+                }
+                .header-connect{text-align: right;
+                    .header-telefone{color:#fff;font-style: 17px;margin-bottom: 12px;max-width: 320px;width: 100%;}
+                    .header-button{max-width: 320px;width: 100%;}
                 }
             }
         }
@@ -167,7 +170,11 @@
 
                 // blog top
                 .blog-chat-buttons{display: flex;justify-content:space-between;padding-top: 20px;margin-bottom: 25px;
-                    .read-more{margin-bottom: 10px;}
+                    .read-more{margin-bottom: 10px;
+                        .button{
+                            span{display: block;}
+                        }
+                    }
                     .blog-chats-buttons-soc{display: flex;
                         a{display: flex;width: 39px;height: 39px;background-color:#e7e8e9;border:1px solid #a4a6a9;border-radius: 1px;text-decoration: none;align-items:center;justify-content:center;padding: 2px;transition:background-color 300ms ease, border-color 300ms ease;
                             img{max-height: 100%;}
@@ -212,7 +219,9 @@
                             &.submit-row{margin-bottom: 0;position: relative;
                                 .submit-row-wrap{display: flex;flex-wrap:wrap;justify-content:space-between;}
                                 .submit-button{max-width: 115px;width: 100%;
-                                    button{font-size: 19px;font-family: 'Proxima Nova', sans-serif;max-width: none;width: 100%;min-height: 30px;line-height: 29px;padding: 0;}
+                                    button{font-size: 19px;font-family: 'Proxima Nova', sans-serif;max-width: none;width: 100%;min-height: 30px;line-height: 29px;padding: 0;
+                                        span{display: block;}
+                                    }
                                 }
                                 .remove-file{position: absolute;width:30px;height: 30px;right: 35px;top:0;opacity: 0;
                                     &:before, &:after{content: '';display: block;position: absolute;width: 26px;height: 2px;background-color: #e7e8e9;transform-origin:50% 50%;top:calc(50% - 1px);left:calc(50% - 13px);transition:background-color 300ms ease;}
