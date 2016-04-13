@@ -93,6 +93,16 @@
     /* header */
 
         .header{
+            .header-top{
+                .header-top-wrap{
+                    .header-logo{
+                        img{max-width: 260px;}
+                    }
+                    .header-connect{
+                        .header-button{width: 260px;}
+                    }
+                }
+            }
             .header-bottom{font-size: 16px;}
         }
 

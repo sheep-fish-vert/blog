@@ -241,22 +241,34 @@ function someAjax(item, someUrl, successFunc, someData){
 
 function likesClickAjax(){
 
+    var send = true;
+
     $(document).on('click', '.blog-chats-like', function(e){
 
         e.preventDefault();
 
-        var item = $(this);
-        var likeWay = item.data('type');
-        var newsId = item.data('news-id');
+        if(send){
 
-        $.ajax({
-            url:'ajax.php',
-            data:{likeWay:item.data('type'), newsId:item.data('news-id')},
-            method:'POST',
-            success:function(data){
-                item.parents('.blog-chats-likes').find('.likes-value').text(data);
-            }
-        });
+            send = false;
+            var item = $(this);
+            var likeWay = item.data('type');
+            var newsId = item.data('news-id');
+
+            item.toggleClass('active');
+            item.parents('.blog-chats-likes').find('.blog-chats-like:not([data-type='+likeWay+'])').removeClass('active');
+
+            $.ajax({
+                url:'ajax.php',
+                data:{likeWay:item.data('type'), newsId:item.data('news-id')},
+                method:'POST',
+                success:function(data){
+                    send = true;
+                    item.parents('.blog-chats-likes').find('.likes-value').text(data);
+                }
+
+            });
+
+        }
 
     });
 
